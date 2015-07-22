@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorOverloadEquality", "OperatorOverloadEquality\OperatorOverloadEquality.csproj", "{E2E9F526-DBB1-4C07-AF69-9638859116F7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OperatorsOverload", "OperatorOverloadEquality\OperatorsOverload.csproj", "{E2E9F526-DBB1-4C07-AF69-9638859116F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExtensionMethods", "ExtensionMethods\ExtensionMethods.csproj", "{09E7235E-CB55-45A1-9E69-3C0E815EA39A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Collections", "Collections\Collections.csproj", "{94605ADA-D857-472D-8F7C-567412908566}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DelegateFunctionAction", "DelegateFunctionAction\DelegateFunctionAction.csproj", "{1462BB44-7CF9-4DEA-808E-2BDE4C2E59EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{E2E9F526-DBB1-4C07-AF69-9638859116F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2E9F526-DBB1-4C07-AF69-9638859116F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2E9F526-DBB1-4C07-AF69-9638859116F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09E7235E-CB55-45A1-9E69-3C0E815EA39A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09E7235E-CB55-45A1-9E69-3C0E815EA39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09E7235E-CB55-45A1-9E69-3C0E815EA39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09E7235E-CB55-45A1-9E69-3C0E815EA39A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94605ADA-D857-472D-8F7C-567412908566}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94605ADA-D857-472D-8F7C-567412908566}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94605ADA-D857-472D-8F7C-567412908566}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94605ADA-D857-472D-8F7C-567412908566}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1462BB44-7CF9-4DEA-808E-2BDE4C2E59EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1462BB44-7CF9-4DEA-808E-2BDE4C2E59EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1462BB44-7CF9-4DEA-808E-2BDE4C2E59EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1462BB44-7CF9-4DEA-808E-2BDE4C2E59EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

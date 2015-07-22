@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("OperatorOverloadEquality")]
+[assembly: AssemblyTitle("NonGenericCollections")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("HP")]
-[assembly: AssemblyProduct("OperatorOverloadEquality")]
+[assembly: AssemblyProduct("NonGenericCollections")]
 [assembly: AssemblyCopyright("Copyright © HP 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 
-[assembly: Guid("88cde62c-5f4a-4c22-b3ec-1fc9d407bc25")]
+[assembly: Guid("069dc028-3af6-4f97-aefb-f082bf454756")]
 
 // Version information for an assembly consists of the following four values:
 //
