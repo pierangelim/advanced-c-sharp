@@ -44,6 +44,8 @@
   <ItemGroup>
     <Compile Include="Basic.cs" />
     <Compile Include="Classes.cs" />
+    <Compile Include="Constraints.cs" />
+    <Compile Include="Default.cs" />
     <Compile Include="Interfaces.cs" />
     <Compile Include="Methods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

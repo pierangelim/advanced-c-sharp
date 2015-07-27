@@ -2,7 +2,6 @@ using NUnit.Framework;
 
 namespace Generics
 {
-
     public interface IComparable<T>
     {
         int CompareTo(T other);
@@ -22,7 +21,6 @@ namespace Generics
             return _value.CompareTo(other._value);
         }
     }
-
 
     public interface IComparer<T>
     {
