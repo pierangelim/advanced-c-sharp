@@ -78,7 +78,7 @@ namespace Generics
             Assert.That(Compare(a, b, inverseComparer), Is.EqualTo(1));
         }
 
-        private int Compare<T>(T a, T b, IComparer<T> comparer)
+        private static int Compare<T>(T a, T b, IComparer<T> comparer)
         {
             return comparer.Compare(a, b);
         }
