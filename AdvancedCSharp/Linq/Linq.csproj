@@ -46,6 +46,7 @@
     <Compile Include="GroupBy.cs" />
     <Compile Include="LoopVsLinq.cs" />
     <Compile Include="OrderBy.cs" />
+    <Compile Include="QueryExpressions.cs" />
     <Compile Include="UtilityExtensions.cs" />
     <Compile Include="ImmediateOperators.cs" />
     <Compile Include="Person.cs" />
