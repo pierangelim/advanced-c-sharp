@@ -26,6 +26,9 @@ namespace Linq
             new Person { Name = "Gianni", Age = 23 },
             new Person { Name = "Paola", Age = 17 },
             new Person { Name = "Antonio", Age = 30 },
+            new Person { Name = "Filippo", Age = 30 },
+            new Person { Name = "Claudio", Age = 30 },
+            new Person { Name = "Michela", Age = 30 },
             new Person { Name = "Marina", Age = 25 },
             new Person { Name = "Carlo", Age = 27 },
         };

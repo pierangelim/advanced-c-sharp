@@ -13,8 +13,6 @@ namespace DelegateFunctionAction
 	{
 		public delegate int BinaryOp(int x, int y); //the compiler generate a sealed class with 3 method: Invoke, BeginInvoke and EndInvoke
 
-		public delegate T BinOp<T>(T x);
-
 		[Test]
 		public void AddOperation()
 		{
@@ -35,6 +33,8 @@ namespace DelegateFunctionAction
 
 			Console.WriteLine("10 - 3 is {0}", d(10, 3));
 		}
+
+		public delegate T BinOp<T>(T x);
 
 		[Test]
 		public void Calc()

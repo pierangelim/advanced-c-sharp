@@ -43,6 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeferredExecution.cs" />
+    <Compile Include="GroupBy.cs" />
+    <Compile Include="LoopVsLinq.cs" />
+    <Compile Include="OrderBy.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Where.cs" />

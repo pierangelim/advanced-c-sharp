@@ -26,7 +26,7 @@ namespace Linq
             var enumerable = Enumerable.Range(0, 10);
 
             var bigNumbers = enumerable.Where(i => i > 5);
-            
+
             Print(bigNumbers);
             Print(enumerable);
         }
