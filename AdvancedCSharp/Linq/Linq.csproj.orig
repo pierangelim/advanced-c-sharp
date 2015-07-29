@@ -43,11 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeferredExecution.cs" />
+<<<<<<< HEAD
     <Compile Include="GroupBy.cs" />
     <Compile Include="LoopVsLinq.cs" />
     <Compile Include="OrderBy.cs" />
+=======
     <Compile Include="UtilityExtensions.cs" />
     <Compile Include="ImmediateOperators.cs" />
+>>>>>>> b2910122b1fe62ea83cf054188e8c1bb10a607f7
     <Compile Include="Person.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Where.cs" />
