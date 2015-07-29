@@ -72,12 +72,4 @@ namespace Linq
             Console.WriteLine(String.Join(separator, enumerbale));
         }
     }
-
-    public static class Extensions
-    {
-        public IEnumerable<int> ToSquares(this IEnumerable<int> enumerable)
-        {
-            
-        }
-    }
 }
