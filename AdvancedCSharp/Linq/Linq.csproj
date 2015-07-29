@@ -43,6 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DeferredExecution.cs" />
+    <Compile Include="UtilityExtensions.cs" />
+    <Compile Include="ImmediateOperators.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Where.cs" />
