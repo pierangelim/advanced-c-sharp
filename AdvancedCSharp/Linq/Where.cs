@@ -60,9 +60,9 @@ namespace Linq
             Print(pepole);
         }
 
-        private static void Print<T>(IEnumerable<T> enumerbale)
+        private static void Print<T>(IEnumerable<T> enumerbale, string separator = ", ")
         {
-            Console.WriteLine(String.Join(", ", enumerbale));
+            Console.WriteLine(String.Join(separator, enumerbale));
         }
     }
 }
