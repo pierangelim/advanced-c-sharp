@@ -10,7 +10,6 @@ namespace Linq
 	{
 		private readonly string[] _currentVideoGames = { "Morrowind", "Uncharted 2", "Fallout 3", "Daxter", "System Shock 2" };
 
-		
 		[Test]
 		public void Loop()
 		{
@@ -40,6 +39,17 @@ namespace Linq
 			finalVideoGames.ForEach(x => Console.WriteLine("VideoGame: {0} (lenght: {1})", x.Name, x.Lenght));
 		}
 
+		/*
+		 * LINQ, or Language Integrated Query, is a set of language and framework features for writing structured type-safe queries over local object collections and remote data sources.
+		 * LINQ works on IEnumerable<T>
+		 * Fluent syntax is the most flexible and fundamental (thanks to extension methods)
+		 * 
+		 * LINQ to Objects:  queries to arrays and collections.
+		 * LINQ to XML: to manipulate and query XML documents.
+		 * LINQ to DataSet: queries to ADO.NET DataSet objects.
+		 * LINQ to Entities: queries within the ADO.NET Entity Framework (EF) API.
+		 * Parallel LINQ (a.k.a. PLINQ): for parallel processing of data returned from a LINQ query.
+		*/
 		[Test]
 		public void Linq()
 		{
