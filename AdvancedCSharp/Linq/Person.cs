@@ -31,7 +31,7 @@ namespace Linq
             new Person { Name = "Michela", Age = 30 },
             new Person { Name = "Marina", Age = 25 },
             new Person { Name = "Carlo", Age = 27 },
+            new Person { Name = "Carlo", Age = 40 },
         };
     }
-
 }
