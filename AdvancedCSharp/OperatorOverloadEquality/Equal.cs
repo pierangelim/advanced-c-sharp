@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace OperatorsOverload
 {
@@ -13,6 +12,7 @@ namespace OperatorsOverload
 			var bing2 = new Bing("california.jpg");
 
 			Assert.IsFalse(bing1.Equals(bing2));
+			Assert.IsFalse(bing1 == bing2);
 		}
 
 		[Test]
@@ -22,6 +22,7 @@ namespace OperatorsOverload
 			var bing2 = new EquitableBing("california.jpg");
 
 			Assert.IsTrue(bing1.Equals(bing2));
+			Assert.IsTrue(bing1 == bing2);
 		}
 	}
 
@@ -40,7 +41,7 @@ namespace OperatorsOverload
 		}
 	}
 
-	public class EquitableBing : IEquatable<EquitableBing>
+	public class EquitableBing
 	{
 		private readonly string _image;
 

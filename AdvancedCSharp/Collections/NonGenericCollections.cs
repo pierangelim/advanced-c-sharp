@@ -8,26 +8,39 @@ namespace Collections
 	public class NonGenericCollections
 	{
 		/*
-		 * poco performanti (clr deve fare molte operaizioni in memoria (box e unbox) quando si opera su classi che lavoro so Object)
+		 * poco performanti (clr deve fare molte operaizioni in memoria (box valuetype->object e unbox object->valuetype) quando si opera su classi che lavoro so Object)
 		 * non sono type safe (eventulamente dovresti creare MyCollection che implementa IEnumerable che garantisce la type safety)
 		 * 
 		 * per ogni collection di tipo diverso si è costretti a creare una classe ad hoc
-		 * public class PersonCollection : IEnumerable
+			public class PersonCollection : IEnumerable
 			{
-			private ArrayList arPeople = new ArrayList();
-			// Cast for caller.
-			public Person GetPerson(int pos)
-			{ return (Person)arPeople[pos]; }
-			// Insert only Person objects.
-			public void AddPerson(Person p)
-			{ arPeople.Add(p); }
-			public void ClearPeople()
-			{ arPeople.Clear(); }
-			public int Count
-			{ get { return arPeople.Count; } }
-			// Foreach enumeration support.
-			IEnumerator IEnumerable.GetEnumerator()
-			{ return arPeople.GetEnumerator(); }
+				private ArrayList arPeople = new ArrayList();
+
+				// Cast for caller.
+				public Person GetPerson(int pos)
+				{
+					return (Person)arPeople[pos];
+				}
+				// Insert only Person objects.
+				public void AddPerson(Person p)
+				{
+					arPeople.Add(p);
+				}
+
+				public void ClearPeople()
+				{
+					arPeople.Clear();
+				}
+
+				public int Count
+				{
+					get { return arPeople.Count; }
+				}
+				// Foreach enumeration support.
+				IEnumerator IEnumerable.GetEnumerator()
+				{
+					return arPeople.GetEnumerator();
+				}
 			}
 		*/
 		/*

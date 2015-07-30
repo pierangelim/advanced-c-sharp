@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using NUnit.Framework;
 
 namespace Collections
@@ -24,8 +25,9 @@ namespace Collections
 			list.ForEach(Console.WriteLine);
 		}
 
+		 //You can apply collection initialization syntax only to classes that support an Add() method, which is formalized by the ICollection<T>/ICollection interfaces.
 		[Test]
-		public void ListObjInitialization()
+		public void ListCollectgionInitialization()
 		{
 			var people = new List<Person>
 			{
@@ -65,7 +67,7 @@ namespace Collections
 
 			//compile time error!
 			//people.Add(valerio.Name, valerio.Age);
-
+			
 			foreach (var key in people.Keys)
 			{
 				Console.WriteLine("{0} ha {1} anni.", key, people[key].Age);
