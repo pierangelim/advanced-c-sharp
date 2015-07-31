@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="DeferredExecution.cs" />
     <Compile Include="GroupBy.cs" />
+    <Compile Include="LocalVsInterpreted.cs" />
     <Compile Include="LoopVsLinq.cs" />
     <Compile Include="OrderBy.cs" />
     <Compile Include="QueryExpressions.cs" />
