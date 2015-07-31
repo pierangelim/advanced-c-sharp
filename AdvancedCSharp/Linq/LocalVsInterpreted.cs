@@ -53,9 +53,9 @@ namespace Linq
                 .OrderBy(x => x);
 
 
-            var dataSet1 = queryable.ToList(); //Execution: half on database, half in memory!
+            var dataSet1 = enumerable.ToList(); //Execution: half on database, half in memory!
 
-            var dataSet2 = queryable.OrderBy(x => x).ToList(); //Execution: half on database, half in memory (.. once again!)
+            var dataSet2 = enumerable.OrderBy(x => x).ToList(); //Execution: half on database, half in memory (.. once again!)
         }
     }
 }
