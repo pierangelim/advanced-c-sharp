@@ -2,6 +2,7 @@
 
 namespace ExtensionMethods
 {
+	//.NET 3.5 introduced the concept of extension methods, which allow you to add new methods or properties to a class or structure, without modifying the original type in any direct manner.
 	[TestFixture]
 	public class ExtesionMethods
 	{

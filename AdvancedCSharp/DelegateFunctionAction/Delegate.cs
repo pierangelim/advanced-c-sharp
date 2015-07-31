@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
+using System.IO;
+using System.Threading;
 using NUnit.Framework;
 
 namespace DelegateFunctionAction
@@ -12,7 +15,6 @@ namespace DelegateFunctionAction
 	public class Delegate
 	{
 		public delegate int BinaryOp(int x, int y); //the compiler generate a sealed class with 3 method: Invoke, BeginInvoke and EndInvoke
-
 		[Test]
 		public void AddOperation()
 		{
@@ -34,8 +36,40 @@ namespace DelegateFunctionAction
 			Console.WriteLine("10 - 3 is {0}", d(10, 3));
 		}
 
-		public delegate T BinOp<T>(T x);
 
+		public delegate void Writer(string text);
+		//delegate instances have multicast capability.
+		[Test]
+		public void Multicast()
+		{
+			var logger = new Writer(ConsoleLogger);
+			logger += FileLogger;
+
+			logger.Invoke("-------------------------------------");
+			for (var i = 0; i <= 100; i+=10)
+			{
+				Thread.Sleep(1000);
+				var text = String.Format("[{0}] - {1}% complete", DateTime.UtcNow, i);
+				logger.Invoke(text);
+			}
+		}
+
+		private static void ConsoleLogger(string text)
+		{
+			Console.WriteLine(text);
+		}
+
+		private static void FileLogger(string text)
+		{
+			var f = new FileInfo("log.txt");
+			using (var w = f.AppendText())
+			{
+				w.WriteLine(text);
+			}
+		}
+
+
+		public delegate T BinOp<T>(T x);
 		[Test]
 		public void Calc()
 		{

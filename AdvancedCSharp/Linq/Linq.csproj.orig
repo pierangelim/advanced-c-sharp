@@ -42,15 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aggregation.cs" />
     <Compile Include="DeferredExecution.cs" />
-<<<<<<< HEAD
     <Compile Include="GroupBy.cs" />
     <Compile Include="LoopVsLinq.cs" />
     <Compile Include="OrderBy.cs" />
+<<<<<<< HEAD
+    <Compile Include="Quantifiers.cs" />
 =======
+    <Compile Include="QueryExpressions.cs" />
+>>>>>>> 4a21d6490ce6cad15efb17a8581cf32bb62ccdcf
     <Compile Include="UtilityExtensions.cs" />
     <Compile Include="ImmediateOperators.cs" />
->>>>>>> b2910122b1fe62ea83cf054188e8c1bb10a607f7
     <Compile Include="Person.cs" />
     <Compile Include="Select.cs" />
     <Compile Include="Where.cs" />
