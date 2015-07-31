@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="CastOperators.cs" />
     <Compile Include="Equal.cs" />
+    <Compile Include="Equals.cs" />
     <Compile Include="Operators.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

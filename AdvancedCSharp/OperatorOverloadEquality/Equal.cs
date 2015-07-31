@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace OperatorsOverload
 {
@@ -8,8 +9,8 @@ namespace OperatorsOverload
 		[Test]
 		public void NotSameObject()
 		{
-			var bing1 = new Bing("california.jpg");
-			var bing2 = new Bing("california.jpg");
+			var bing1 = new Bing(new Uri("http://www.bing.com"), "california.jpg");
+			var bing2 = new Bing(new Uri("http://www.bing.com"), "california.jpg");
 
 			Assert.IsFalse(bing1.Equals(bing2));
 			Assert.IsFalse(bing1 == bing2);
@@ -18,8 +19,8 @@ namespace OperatorsOverload
 		[Test]
 		public void SameObject()
 		{
-			var bing1 = new EquitableBing("california.jpg");
-			var bing2 = new EquitableBing("california.jpg");
+			var bing1 = new EquitableBing(new Uri("http://www.bing.com"), "california.jpg");
+			var bing2 = new EquitableBing(new Uri("http://www.bing.com"), "california.jpg");
 
 			Assert.IsTrue(bing1.Equals(bing2));
 			Assert.IsTrue(bing1 == bing2);
@@ -28,38 +29,30 @@ namespace OperatorsOverload
 
 	public class Bing
 	{
-		private readonly string _image;
+		public string Image { set; get; }
+		public Uri BaseUri { set; get; }
 
-		public Bing(string image)
+		public Bing(Uri baseUri , string image)
 		{
-			_image = image;
-		}
-
-		public string Image
-		{
-			get { return _image; }
+			BaseUri = baseUri;
+			Image = image;
 		}
 	}
 
 	public class EquitableBing
 	{
-		private readonly string _image;
+		public string Image { set; get; }
+		public Uri BaseUri { set; get; }
 
-		public EquitableBing(string image)
+		public EquitableBing(Uri baseUri, string image)
 		{
-			_image = image;
+			BaseUri = baseUri;
+			Image = image;
 		}
 
-		public string Image
+		protected bool Equals(EquitableBing other)
 		{
-			get { return _image; }
-		}
-
-		public bool Equals(EquitableBing other)
-		{
-			if (ReferenceEquals(null, other)) return false;
-			if (ReferenceEquals(this, other)) return true;
-			return string.Equals(_image, other._image);
+			return string.Equals(Image, other.Image) && Equals(BaseUri, other.BaseUri);
 		}
 
 		public override bool Equals(object obj)
@@ -72,7 +65,10 @@ namespace OperatorsOverload
 
 		public override int GetHashCode()
 		{
-			return (_image != null ? _image.GetHashCode() : 0);
+			unchecked
+			{
+				return ((Image != null ? Image.GetHashCode() : 0) * 397) ^ (BaseUri != null ? BaseUri.GetHashCode() : 0);
+			}
 		}
 
 		public static bool operator ==(EquitableBing left, EquitableBing right)
