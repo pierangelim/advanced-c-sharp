@@ -29,7 +29,7 @@ namespace Linq
         {
             var numbers = Enumerable.Range(0, 10);
 
-            var squares = numbers.CustomSelect(n => n * n).ToList();
+            var squares = numbers.CustomSelect(n => n * n);
 
             Console.WriteLine("--------------- STARING -----------------");
 
