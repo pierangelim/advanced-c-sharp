@@ -75,7 +75,7 @@ namespace Collections
 			foreach (var e in array)
 			{
 				Console.WriteLine(e);
-				//a += (int)e; // <-- runtime exception!
+				//a += (int)e; // <-- run-time exception!
 			}
 		}
 

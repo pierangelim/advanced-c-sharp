@@ -9,29 +9,30 @@ namespace Collections
 	public class GenericCollections
 	{
 		/*
-		  * migliori performance perchè non deve fare box e unbox dei value type
-		  * sono type safe perchè contengono solo tipi di oggetti specificati
-		  * riduce la necessità di crearsi collection custom
-		  */
+		 * better performance than nongeneric collection
+		 * type safe
+		 * custom class to handle typed collection is now useless
+		*/
 
 		[Test]
 		public void ListIsTypeSafe()
 		{
 			var list = new List<string>();
-			list.Add("Matteo ha");
+			list.Add("Matteo is");
 			list.Add("31");
-			list.Add("anni");
+			list.Add("years old");
 
 			list.ForEach(Console.WriteLine);
 		}
 
-		 //You can apply collection initialization syntax only to classes that support an Add() method, which is formalized by the ICollection<T>/ICollection interfaces.
+		//You can apply collection initialization syntax only to classesthat support an Add() method,
+		//which is formalized by the ICollection<T>/ICollection interfaces.
 		[Test]
 		public void ListCollectgionInitialization()
 		{
 			var people = new List<Person>
 			{
-				new Person { Name = "Matteo", Age = 12 },
+				new Person { Name = "Matteo", Age = 12 }, //equivalent to people.Add(new Person { Name = "Matteo", Age = 12 }); add the object to the end of the list
 				new Person { Name = "Valerio", Age = 13 }
 			};
 
@@ -42,8 +43,8 @@ namespace Collections
 				Console.WriteLine(person.Name);
 			}
 
-			var a = people.ToArray();
-			foreach (var person in a)
+			var peopleArray = people.ToArray();
+			foreach (var person in peopleArray)
 			{
 				Console.WriteLine(person.Name);
 			}
@@ -55,29 +56,26 @@ namespace Collections
 		public void Dicitonary()
 		{
 			var people = new Dictionary<string, Person>();
-			var matteo = new Person();
-			matteo.Name = "Matteo";
-			matteo.Age = 12;
-			var valerio = new Person();
-			valerio.Name = "Valerio";
-			valerio.Age = 13;
+			var matteo = new Person
+			{
+				Name = "Matteo",
+				Age = 12
+			};
+			var valerio = new Person
+			{
+				Name = "Valerio",
+				Age = 13
+			};
 
 			people.Add(matteo.Name, matteo);
 			people.Add(valerio.Name, valerio);
 
-			//compile time error!
-			//people.Add(valerio.Name, valerio.Age);
+			//people.Add(valerio.Name, valerio.Age); // <-- compile-time error! it is type safe!
 			
 			foreach (var key in people.Keys)
 			{
-				Console.WriteLine("{0} ha {1} anni.", key, people[key].Age);
+				Console.WriteLine("{0} is {1} years old.", key, people[key].Age);
 			}
 		}
-	}
-
-	public class Person
-	{
-		public string Name { get; set; }
-		public int Age { get; set; }
 	}
 }

@@ -40,6 +40,7 @@
     <Compile Include="GenericCollections.cs" />
     <Compile Include="GenericInterfaces.cs" />
     <Compile Include="NonGenericCollections.cs" />
+    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
