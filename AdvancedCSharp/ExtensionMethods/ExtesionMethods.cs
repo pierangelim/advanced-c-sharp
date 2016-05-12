@@ -2,7 +2,11 @@
 
 namespace ExtensionMethods
 {
-	//.NET 3.5 introduced the concept of extension methods, which allow you to add new methods or properties to a class or structure, without modifying the original type in any direct manner.
+	/*
+	 * .NET 3.5 introduced the concept of extension methods,
+	 * which allow you to add new methods or properties to a class or structure,
+	 * without modifying the original type in any direct manner.
+	*/
 	[TestFixture]
 	public class ExtesionMethods
 	{
@@ -12,6 +16,7 @@ namespace ExtensionMethods
 		[TestCase(7, 5040)]
 		public void Factorial(int number, int factorial)
 		{
+			Assert.That(IntegerExtensions.Factorial(number), Is.EqualTo(factorial));
 			Assert.That(number.Factorial(), Is.EqualTo(factorial));
 		}
 	}
