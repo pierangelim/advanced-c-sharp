@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Security.AccessControl;
+using System.Text;
 using NUnit.Framework;
 
 namespace Generics
@@ -45,9 +46,18 @@ namespace Generics
         [Test]
         public void MultipleTypes()
         {
-            Assert.IsTrue(CompareAsString("01/01/2015 00:00:00", new DateTime(2015, 1, 1)));
+            Assert.IsTrue(CompareAsString("12", 12));            
             Assert.IsTrue(CompareAsString(new Hashtable(), "System.Collections.Hashtable"));
-            Assert.IsTrue(CompareAsString("12", 12));
+
+
+            var dateTime = new DateTime(2015, 1, 1);
+            var builder = new StringBuilder()
+                .Append("01/01/2015")
+                .Append(" ")
+                .Append("00:00:00");
+
+            Assert.IsTrue(CompareAsString(builder, dateTime));
+
         }
     }
 }
