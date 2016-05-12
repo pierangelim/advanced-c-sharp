@@ -8,63 +8,74 @@ namespace Collections
 	public class NonGenericCollections
 	{
 		/*
-		 * poco performanti (clr deve fare molte operaizioni in memoria (box valuetype->object e unbox object->valuetype) quando si opera su classi che lavoro so Object)
-		 * non sono type safe (eventulamente dovresti creare MyCollection che implementa IEnumerable che garantisce la type safety)
+		 * poor performance with value type
+		 * clr have to permform many memory operations
+		 * (box valuetype -> object e unbox object -> valuetype) -> stack/heap memory transfer
 		 * 
-		 * per ogni collection di tipo diverso si è costretti a creare una classe ad hoc
-			public class PersonCollection : IEnumerable
-			{
-				private ArrayList arPeople = new ArrayList();
-
-				// Cast for caller.
-				public Person GetPerson(int pos)
-				{
-					return (Person)arPeople[pos];
-				}
-				// Insert only Person objects.
-				public void AddPerson(Person p)
-				{
-					arPeople.Add(p);
-				}
-
-				public void ClearPeople()
-				{
-					arPeople.Clear();
-				}
-
-				public int Count
-				{
-					get { return arPeople.Count; }
-				}
-				// Foreach enumeration support.
-				IEnumerator IEnumerable.GetEnumerator()
-				{
-					return arPeople.GetEnumerator();
-				}
-			}
+		 * no type safe
+		 * in order to have type safety you have to have your own class
+		 * that implements IEnumerable and you have to cast/check at every operation
+		 * E.g. PersonCollection class below
+		 * 
+		 * For every type you have to create a dedicated class
+		 * very boring and verbose
 		*/
+
+		public class PersonCollection : IEnumerable
+		{
+			private ArrayList arPeople = new ArrayList();
+
+			// Cast for caller.
+			public Person GetPerson(int pos)
+			{
+				return (Person)arPeople[pos];
+			}
+			// Insert only Person objects.
+			public void AddPerson(Person p)
+			{
+				arPeople.Add(p);
+			}
+
+			public void ClearPeople()
+			{
+				arPeople.Clear();
+			}
+
+			public int Count
+			{
+				get { return arPeople.Count; }
+			}
+			// Foreach enumeration support.
+			IEnumerator IEnumerable.GetEnumerator()
+			{
+				return arPeople.GetEnumerator();
+			}
+		}
+
 		/*
-			ICollection Defines general characteristics (e.g., size, enumeration, and thread safety) for all nongeneric collection types.
-			ICloneable Allows the implementing object to return a copy of itself to the caller.
-			IDictionary Allows a nongeneric collection object to represent its contents using key/value pairs.
-			IEnumerable Returns an object implementing the IEnumerator interface (see next table entry).
-			IEnumerator Enables foreach style iteration of collection items.
-			IList Provides behavior to add, remove, and index items in a sequential list of objects.
+		 * .NET provides some interfaces implemented by system class used to manage data (e.g. ArrayList, BitArray, HashTable, Queue, SortedList, Stack ...).
+		 * 
+		 * ICollection Defines general characteristics (e.g., size, enumeration, and thread safety) for all nongeneric collection types.
+		 * ICloneable Allows the implementing object to return a copy of itself to the caller.
+		 * IDictionary Allows a nongeneric collection object to represent its contents using key/value pairs.
+		 * IEnumerable Returns an object implementing the IEnumerator interface.
+		 * IEnumerator Enables foreach style iteration of collection items.
+		 * IList Provides behavior to add, remove, and index items in a sequential list of objects.
 		*/
 
 		[Test]
 		public void ArrayListIsUnsafe()
 		{
 			var array = new ArrayList();
-			array.Add("Matteo ha");
+			array.Add("Matteo is");
 			array.Add(31);
-			array.Add("anni");
+			array.Add("years old");
 
 			//var a = 0;
 			foreach (var e in array)
 			{
 				Console.WriteLine(e);
-				//a += (int)e;
+				//a += (int)e; // <-- runtime exception!
 			}
 		}
 
@@ -72,21 +83,21 @@ namespace Collections
 		public void HashTable()
 		{
 			var cache = new Hashtable();
-			cache.Add(123, "matteo");
-			cache.Add(124, "pierangeli");
+			cache.Add(123, "Matteo");
+			cache.Add(124, "Pierangeli");
 			cache.Add(125, 31);
 
-			Assert.That(cache[123], Is.EqualTo("matteo"));
+			Assert.That(cache[123], Is.EqualTo("Matteo"));
 		}
 
 		[Test]
 		public void Stack()
 		{
 			var s = new Stack(10);
-			s.Push("matteo");
-			s.Push("pierangeli");
+			s.Push("Matteo");
+			s.Push("Pierangeli");
 
-			Assert.That(s.Pop(), Is.EqualTo("pierangeli"));
+			Assert.That(s.Pop(), Is.EqualTo("Pierangeli"));
 		}
 	}
 }
