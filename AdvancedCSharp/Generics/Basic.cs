@@ -43,6 +43,8 @@ namespace Generics
             Assert.IsTrue((DateTime)bObj == new DateTime(2015, 12, 25));
         }
 
+        //Inheritance expresses reusability with a base type, generics express reusability with a “template” that contains “placeholder” types.
+        //Generics, when compared to inheritance, can increase type safety and reduce casting and boxing.
 
         private static void Swap<T>(ref T left, ref T right)
         {

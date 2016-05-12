@@ -44,4 +44,12 @@ namespace Generics
             Assert.That(intComparerFactory.Create(), Is.Not.Null);
         }
     }
+
+    //These are the possible constraints:
+    //    where T : <base-class> // Base-class constraint
+    //    where T : <interface> // Interface constraint
+    //    where T : class // Reference-type constraint
+    //    where T : struct // Value-type constraint (excludes Nullable types)
+    //    where T : new() // Parameterless constructor constraint
+    //    where T : <type> // Naked type constraint    
 }

@@ -3,6 +3,8 @@ using NUnit.Framework;
 
 namespace Generics
 {
+    //A "generic type" declares type parameters—placeholder types to be filled in by the consumer of the generic type, which supplies the "type arguments"
+
     public class Stack<T>
     {
         private int _position;
