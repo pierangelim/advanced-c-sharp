@@ -48,7 +48,7 @@ namespace AnonymousTypes
             var handler = (dynamic)anonType;
 
             Assert.That(handler.Name, Is.EqualTo("Mario"));
-            Assert.That(handler.Name, Is.EqualTo("Mario"));
+            Assert.That(handler.Surname, Is.EqualTo("Rossi"));
         }
 
         private static object Create(string name, string surname)
