@@ -7,22 +7,38 @@ namespace Variance
 	[TestFixture]
 	public class Variance
 	{
-		//List<Fruit> frutta = new List<Apple>();
-		IBag<Fruit> _frutta = new Bag<Apple>();
-
 		[Test]
-		public void Covariance()
+        public void TheProblem()
+        {
+            List<Fruit> fruits = new List<Fruit>();
+
+            fruits.Add(new Apple());
+            fruits.Add(new Orange());
+
+            //List<Fruit> apples = new List<Apple>();
+            //apples.Add(new Apple());
+            //apples.Add(new Orange()); //BOOM!
+
+            //Comparer<Fruit> comparer = new Comparer<Apple>();
+            //comparer.compare(new Apple(), new Orange()); //BOOM!
+        }
+
+        [Test]
+		public void Covariance() 
 		{
-			//List<Fruit> frutta = new List<Apple>();
-			IBag<Fruit> fruits = new Bag<Apple>();
+            //The type parameter is present only as output parameter
+
+            IBag<Fruit> fruits = new Bag<Apple>();
 
 			var theFruit = fruits.FirstOrDefault();
 		}
 
-		[Test]
+        [Test]
 		public void Controvariance()
 		{
-			IComparer<Apple> comparer = new Comparer<Fruit>();
+            //The type parameter is present only as input parameter
+
+            IComparer<Apple> comparer = new Comparer<Fruit>();
 
 			var a = new Apple();
 			var b = new Apple();
@@ -48,21 +64,21 @@ namespace Variance
 
 	public class Bag<T> : IBag<T>
 	{
-		private readonly List<T> list;
+		private readonly List<T> _list;
 
 		public Bag()
 		{
-			list = new List<T>();
+			_list = new List<T>();
 		}
 
 		public void Add(T item)
 		{
-			list.Add(item);
+			_list.Add(item);
 		}
 
 		public T FirstOrDefault()
 		{
-			return list.FirstOrDefault();
+			return _list.FirstOrDefault();
 		}
 	}
 

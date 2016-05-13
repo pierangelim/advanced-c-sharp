@@ -45,6 +45,7 @@ namespace LambdaExpressions
 
             Console.WriteLine(natural());
             Console.WriteLine(natural());
+
             Console.WriteLine(seed);
         }
 

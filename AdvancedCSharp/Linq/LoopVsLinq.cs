@@ -53,11 +53,11 @@ namespace Linq
 		[Test]
 		public void Linq()
 		{
-            var finalVideoGames = _currentVideoGames.Where(x => x.Contains(" "))
+		    var finalVideoGames = _currentVideoGames.Where(x => x.Contains(" "))
 		        .OrderBy(x => x)
-		        .Select(x => new FinalGames{Name = x, Lenght = x.Length})
+		        .Select(x => new FinalGames { Name = x, Lenght = x.Length })
 		        .ToList();
-		    
+
             finalVideoGames.ForEach(x => Console.WriteLine("VideoGame: {0} (lenght: {1})", x.Name, x.Lenght));
 		}
 	}
