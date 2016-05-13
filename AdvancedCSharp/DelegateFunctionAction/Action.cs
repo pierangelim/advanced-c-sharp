@@ -8,7 +8,7 @@ namespace DelegateFunctionAction
 	public class Action
 	{
 		/*
-		 * For usedelegate in you code, yuo have to:
+		 * To use delegate in you code, yuo have to:
 		 * - Define a custom delegate that matches the format of the method being pointed to.
 		 * - Create an instance of your custom delegate, passing in a method name as a constructor argument.
 		 * - Invoke the method indirectly, via a call to Invoke() on the delegate object.
