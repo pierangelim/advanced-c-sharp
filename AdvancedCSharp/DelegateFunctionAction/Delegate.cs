@@ -1,30 +1,38 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
 
 namespace DelegateFunctionAction
 {
 	/*
-	 * .NET delegate type is a type-safe object that “points to” a method that can be invoked at a later time.
-	 *		address, parameters and return type
+	 * in .NET a delegate is a type-safe object that points to another method (static and not).
+	 * it's composed by 3 pieces of information: address, parameters and return type
 	*/
 
 	[TestFixture]
 	public class Delegate
 	{
-		public delegate int BinaryOp(int x, int y); //the compiler generate a sealed class with 3 method: Invoke, BeginInvoke and EndInvoke
+		private delegate int BinaryOp(int x, int y); // the compiler generate a sealed class with 3 method: Invoke, BeginInvoke and EndInvoke
+		/*
+			sealed class BinaryOp : System.MulticastDelegate
+			{
+				public int Invoke(int x, int y);
+				public IAsyncResult BeginInvoke(int x, int y, AsyncCallback cb, object state);
+				public int EndInvoke(IAsyncResult result);
+			}
+		*/
 		[Test]
 		public void AddOperation()
 		{
-			var d = new BinaryOp(SimpleMathStatic.Add);
+			var d = new BinaryOp(SimpleMath.Add); //static method
+			//var d2 = new BinaryOp(SimpleMath.SquareNumber); // <-- compile-time error! it is type safe!
 
-			//compile error - delegate are type-safe
-			//var d2 = new BinaryOp(SimpleMath.SquareNumber);
-
+			DisplayDelegateInfo(d);
 			Console.WriteLine("10 + 10 is {0}", d(10, 10));
-			Console.WriteLine("10 + 10 is {0}", d.Invoke(10, 10));
+			Console.WriteLine("10 + 10 is {0}", d.Invoke(10, 10)); // it is equivalent
 		}
 
 		[Test]
@@ -33,22 +41,23 @@ namespace DelegateFunctionAction
 			var math = new SimpleMath();
 			var d = new BinaryOp(math.Subtract); //if method is not static I've to create an istance of class to create the delegate
 
+			DisplayDelegateInfo(d);
 			Console.WriteLine("10 - 3 is {0}", d(10, 3));
 		}
 
-
-		public delegate void Writer(string text);
-		//delegate instances have multicast capability.
+		private delegate void Writer(string text);
 		[Test]
 		public void Multicast()
 		{
 			var logger = new Writer(ConsoleLogger);
-			logger += FileLogger;
+			logger += FileLogger; //delegate instances have multicast capability. can be used by the overloaded += operator
+
+			DisplayDelegateInfo(logger);
 
 			logger.Invoke("-------------------------------------");
 			for (var i = 0; i <= 100; i+=10)
 			{
-				Thread.Sleep(1000);
+				Thread.Sleep(500);
 				var text = String.Format("[{0}] - {1}% complete", DateTime.UtcNow, i);
 				logger.Invoke(text);
 			}
@@ -68,44 +77,28 @@ namespace DelegateFunctionAction
 			}
 		}
 
-
-		public delegate T BinOp<T>(T x);
+		private delegate T BinOp<T>(T x);
 		[Test]
 		public void Calc()
 		{
-			var square = new BinOp<int>(SimpleMathStatic.SquareNumber);
-			var factorial = new BinOp<int>(SimpleMathStatic.Factorial);
+			var square = new BinOp<long>(SimpleMath.SquareNumber);
+			var factorial = new BinOp<int>(SimpleMath.Factorial);
 
+			DisplayDelegateInfo(square);
+			DisplayDelegateInfo(factorial);
+			
+			const long longNumber = 77214L;
 			const int number = 7;
-
-			Console.WriteLine("square of {0}: {1}", number, square(number));
+			Console.WriteLine("square of {0}: {1}", longNumber, square(longNumber));
 			Console.WriteLine("factorial of {0}: {1}", number, factorial.Invoke(number));
 		}
 
-		public static class SimpleMathStatic
+		private static void DisplayDelegateInfo(System.Delegate delObj)
 		{
-			public static int Add(int x, int y)
+			foreach (System.Delegate d in delObj.GetInvocationList())
 			{
-				return x + y;
-			}
-
-			public static int SquareNumber(int a)
-			{
-				return a * a;
-			}
-
-			public static int Factorial(int x)
-			{
-				if (x <= 1) return 1;
-				return x * Factorial(x - 1);
-			}
-		}
-
-		public class SimpleMath
-		{
-			public int Subtract(int x, int y)
-			{
-				return x - y;
+				Console.WriteLine("Method Name: {0}", d.Method);
+				Console.WriteLine(string.Join(", " , d.GetMethodInfo().GetParameters().Select(x => string.Format("{0} {1}", x.Name, x.ParameterType))));
 			}
 		}
 	}
