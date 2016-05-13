@@ -6,6 +6,11 @@ namespace Linq
 {
     public static class UtilityExtensions
     {
+        public static void Print<T>(this IEnumerable<T> enumerbale, string separator = ", ")
+        {
+            Console.WriteLine(String.Join(separator, enumerbale));
+        }
+
         public static IEnumerable<TResult> CustomSelect<TSource, TResult>(this IEnumerable<TSource> enumerable, Func<TSource, TResult> selector)
         {
             return enumerable.Select(item =>
@@ -14,12 +19,6 @@ namespace Linq
                 Console.WriteLine("Processing item: {0} -> {1}", item, result);
                 return result;
             });
-        }
-
-
-        public static void Print<T>(this IEnumerable<T> enumerbale, string separator = ", ")
-        {
-            Console.WriteLine(String.Join(separator, enumerbale));
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Linq
         {
             //Query operators are execute not when constructed, but when enumerated (in other words, when MoveNext is called on its enumerator).
 
-            var numbers = new List<int>() { 1, 2, 3, 4 };
+            var numbers = new List<int> { 1, 2, 3, 4 };
 
             var query = numbers.Select(n => n * 10);
 
@@ -33,11 +33,11 @@ namespace Linq
 
             Console.WriteLine("--------------- STARING -----------------");
 
-            Print(squares);
+            squares.Print();
 
             Console.WriteLine("--------------------------------");
 
-            Print(squares);
+            squares.Print();
 
             Console.WriteLine("--------------- STOPING -----------------");
         }
@@ -51,11 +51,11 @@ namespace Linq
 
             Console.WriteLine("--------------- STARING -----------------");
 
-            Print(squares);
+            squares.Print();
 
             Console.WriteLine("--------------------------------");
 
-            Print(squares);
+            squares.Print();
 
             Console.WriteLine("--------------- STOPING -----------------");
         }
@@ -69,7 +69,7 @@ namespace Linq
                 .Select(n => new { Value = n, Square = n * n })
                 .ToDictionary(o => o.Value, o => o.Square);
 
-            Print(squares);
+            squares.Print();
         }
 
         [Test]
@@ -82,9 +82,9 @@ namespace Linq
                 .Take(5)
                 .ToArray();
 
-            Console.WriteLine();
+            Console.WriteLine("--------------------------------");
 
-            Print(result);
+            result.Print();
         }
 
         [Test]
@@ -96,9 +96,11 @@ namespace Linq
 
             var objects = ListOfBigObjects();
 
-            Console.WriteLine();
+            Console.WriteLine("--------------------------------");
 
-            Print(objects.Take(5));
+            var list = objects.Take(5);
+
+            list.Print();
         }
 
         private IEnumerable<object> ListOfBigObjects()
@@ -118,11 +120,6 @@ namespace Linq
                 Console.WriteLine("Producing Number {0}", i);
                 yield return i;
             }
-        }
-
-        private static void Print<T>(IEnumerable<T> enumerbale, string separator = ", ")
-        {
-            Console.WriteLine(String.Join(separator, enumerbale));
         }
     }
 }
