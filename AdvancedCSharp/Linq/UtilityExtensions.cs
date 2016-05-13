@@ -15,5 +15,11 @@ namespace Linq
                 return result;
             });
         }
+
+
+        public static void Print<T>(this IEnumerable<T> enumerbale, string separator = ", ")
+        {
+            Console.WriteLine(String.Join(separator, enumerbale));
+        }
     }
 }

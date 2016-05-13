@@ -15,7 +15,7 @@ namespace Linq
 
             var squares = enumerable.Select(i => i * i);
 
-            Print(squares);
+            squares.Print();
         }
 
         [Test]
@@ -25,7 +25,7 @@ namespace Linq
 
             var months = enumerable.Select(i => new DateTime(2015, i, 1).ToString("MMMM"));
 
-            Print(months);
+            months.Print();
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Linq
         {
             var ages = People.All.Select(p => p.Age);
 
-            Print(ages);
+            ages.Print();
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace Linq
                 BirthYear = DateTime.Now.AddYears(-p.Age).Year
             });
 
-            Print(projected);
+            projected.Print();
         }
 
         [Test]
@@ -56,7 +56,7 @@ namespace Linq
                 .Select(n => n.ToUpper())
                 .Select(n => n.PadRight(15, '.'));
 
-            Print(projected, Environment.NewLine);
+            projected.Print(Environment.NewLine);
         }
 
         [Test]
@@ -66,7 +66,7 @@ namespace Linq
 
             var result = enumerable.SelectMany(i => Enumerable.Range(i * 5, 5));
 
-            Print(result);
+            result.Print();
         }
 
         [Test]
@@ -80,12 +80,7 @@ namespace Linq
 
             var theList = lists.SelectMany(x => x);
 
-            Print(theList);
-        }
-
-        private static void Print<T>(IEnumerable<T> enumerbale, string separator = ", ")
-        {
-            Console.WriteLine(String.Join(separator, enumerbale));
+            theList.Print();
         }
     }
 }

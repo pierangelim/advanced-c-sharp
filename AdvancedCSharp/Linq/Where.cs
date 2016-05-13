@@ -17,7 +17,7 @@ namespace Linq
 
             var even = enumerable.Where(i => i % 2 == 0);
 
-            Print(even);
+            even.Print();
         }
 
         [Test]
@@ -27,18 +27,18 @@ namespace Linq
 
             var bigNumbers = enumerable.Where(i => i > 5);
 
-            Print(bigNumbers);
-            Print(enumerable);
+            bigNumbers.Print();
+            enumerable.Print();
         }
 
         [Test]
         public void ComplexTypes()
         {
             var people = People.All.Where(p => p.Name.StartsWith("M"));
-            Print(people);
+            people.Print();
 
             var seniors = People.All.Where(p => p.Age >= 18);
-            Print(seniors);
+            seniors.Print();
         }
 
         [Test]
@@ -46,7 +46,7 @@ namespace Linq
         {
             var oddPeople = People.All.Where((p, index) => index % 2 != 0);
 
-            Print(oddPeople);
+            oddPeople.Print();
         }
 
         [Test]
@@ -57,12 +57,7 @@ namespace Linq
                 .Where(p => p.Name.StartsWith("C"))
                 .Where(p => p.Name.Length == 8);
 
-            Print(pepole);
-        }
-
-        private static void Print<T>(IEnumerable<T> enumerbale, string separator = ", ")
-        {
-            Console.WriteLine(String.Join(separator, enumerbale));
+            pepole.Print();
         }
     }
 }
