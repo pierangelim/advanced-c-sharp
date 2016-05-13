@@ -21,8 +21,8 @@ namespace DelegateFunctionAction
 		[Test]
 		public void SquareFactorial() //As you can see, using the Function<> delegate saves you the bother of defining a custom delegate.
 		{
-			Func<int, int> sq = SimpleMathStatic.SquareNumber;
-			Func<int, int> fa = SimpleMathStatic.Factorial;
+			Func<int, int> sq = SimpleMath.SquareNumber; //static method
+			Func<int, int> fa = SimpleMath.Factorial; //static method
 
 			operationList.Add(sq);
 			operationList.Add(fa);
@@ -38,27 +38,13 @@ namespace DelegateFunctionAction
 		{
 			Action<string, int, Func<int, int>> visualizer = Visualizer.MathOperationVisualizer;
 
-			Func<int, int> sq = SimpleMathStatic.SquareNumber;
-			Func<int, int> fa = SimpleMathStatic.Factorial;
+			Func<int, int> sq = SimpleMath.SquareNumber; //static method
+			Func<int, int> fa = SimpleMath.Factorial; //static method
 
 			const int number = 7;
 
 			visualizer("square", number, sq);
 			visualizer("factorial", number, fa);
-		}
-
-		public static class SimpleMathStatic
-		{
-			public static int SquareNumber(int a)
-			{
-				return a * a;
-			}
-
-			public static int Factorial(int x)
-			{
-				if (x <= 1) return 1;
-				return x * Factorial(x - 1);
-			}
 		}
 
 		public static class Visualizer

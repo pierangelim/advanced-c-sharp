@@ -40,6 +40,7 @@
     <Compile Include="Action.cs" />
     <Compile Include="Delegate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimpleMath.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
