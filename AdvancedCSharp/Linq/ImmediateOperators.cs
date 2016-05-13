@@ -36,6 +36,7 @@ namespace Linq
         public void FirstWithPredicate()
         {
             var result = Enumerable.Range(0, 10)
+                .CustomSelect(x => x)
                 .First(x => x % 2 == 0);
 
             //var result = Enumerable.Range(0, 10)
