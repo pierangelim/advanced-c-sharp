@@ -14,32 +14,33 @@ namespace DelegateFunctionAction
 		 * - Invoke the method indirectly, via a call to Invoke() on the delegate object.
 		 * 
 		 * You can use framework built-in generic delegate Action<> and Func<>
+		 * Using the Function<> delegate saves you the bother of defining a custom delegate.
 		*/
 
-		private List<Func<int, int>> operationList = new List<Func<int, int>>();
-
+		//Be aware that the final type parameter of Func<> is always the return value of the method.
+		private readonly List<Func<int, int>> _operationList = new List<Func<int, int>>();
 		[Test]
-		public void SquareFactorial() //As you can see, using the Function<> delegate saves you the bother of defining a custom delegate.
+		public void SquareFactorial()
 		{
-			Func<int, int> sq = SimpleMath.SquareNumber; //static method
-			Func<int, int> fa = SimpleMath.Factorial; //static method
+			Func<int, int> sq = SimpleMath.SquareNumber;
+			Func<int, int> fa = SimpleMath.Factorial;
 
-			operationList.Add(sq);
-			operationList.Add(fa);
+			_operationList.Add(sq);
+			_operationList.Add(fa);
 
-			foreach (var operation in operationList)
+			foreach (var operation in _operationList)
 			{
 				Console.WriteLine(operation(7));
 			}
 		}
 
 		[Test]
-		public void AddOperation() //If you have to return void
+		public void AddOperation() //If you have to return void you have to use Action<> instead of Func<>
 		{
 			Action<string, int, Func<int, int>> visualizer = Visualizer.MathOperationVisualizer;
 
-			Func<int, int> sq = SimpleMath.SquareNumber; //static method
-			Func<int, int> fa = SimpleMath.Factorial; //static method
+			Func<int, int> sq = SimpleMath.SquareNumber;
+			Func<int, int> fa = SimpleMath.Factorial;
 
 			const int number = 7;
 
