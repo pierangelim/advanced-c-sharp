@@ -6,7 +6,6 @@ namespace Events
     [TestFixture]
     public class StandardEvents
     {
-
         [Test]
         public void EventArgs()
         {
@@ -40,7 +39,6 @@ namespace Events
 
     public class Timer
     {
-        
         public event EventHandler<EventArgs> Starting;
         public event EventHandler<TimerEventArgs> Stopping;
 
@@ -48,14 +46,16 @@ namespace Events
 
         public void Start()
         {
-            if(Starting != null)
-                Starting.Invoke(this, new EventArgs());
+            var temp = Starting;
+            if(temp != null)
+                temp.Invoke(this, new EventArgs());
         }
 
         public void Stop()
         {
-            if (Stopping != null)
-                Stopping.Invoke(this, new TimerEventArgs(2500));
+            var temp = Stopping;
+            if (temp != null)
+                temp.Invoke(this, new TimerEventArgs(2500));
         }
     }
 
