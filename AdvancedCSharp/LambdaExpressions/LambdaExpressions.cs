@@ -65,7 +65,6 @@ namespace LambdaExpressions
             Console.WriteLine(createGuid());
         }
 
-
         [Test]
         public void Action()
         {
