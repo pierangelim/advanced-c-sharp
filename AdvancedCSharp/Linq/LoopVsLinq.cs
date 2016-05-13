@@ -8,7 +8,7 @@ namespace Linq
 	[TestFixture]
 	public class LoopVsLinq
 	{
-		private readonly string[] _currentVideoGames = { "Morrowind", "Uncharted 2", "Fallout 3", "Daxter", "System Shock 2" };
+		private readonly string[] _currentVideoGames = { "The Secret of Monkey Island", "Dungeon Keeper", "Commandos", "Day of the Tentacle", "OutRun" };
 
 		[Test]
 		public void Loop()
