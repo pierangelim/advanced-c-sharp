@@ -53,6 +53,10 @@ namespace Collections
 		}
 
 		/*
+		 * Useful Types of System.Collections
+		 * ArrayList, BitArray, Hashtable, Queue, SortedList and Stack
+		 * 
+		 * 
 		 * .NET provides some interfaces implemented by system class used to manage data (e.g. ArrayList, BitArray, HashTable, Queue, SortedList, Stack ...).
 		 * 
 		 * ICollection Defines general characteristics (e.g., size, enumeration, and thread safety) for all nongeneric collection types.
@@ -75,7 +79,7 @@ namespace Collections
 			foreach (var e in array)
 			{
 				Console.WriteLine(e);
-				//a += (int)e; // <-- run-time exception!
+				//a += (int)e; //--> run-time exception!
 			}
 		}
 
@@ -91,13 +95,35 @@ namespace Collections
 		}
 
 		[Test]
+		public void Queue()
+		{
+			var queue = new Queue(10);
+			queue.Enqueue("Matteo");
+			queue.Enqueue("Pierangeli");
+
+			Assert.That(queue.Dequeue(), Is.EqualTo("Matteo"));
+		}
+
+		[Test]
 		public void Stack()
 		{
-			var s = new Stack(10);
-			s.Push("Matteo");
-			s.Push("Pierangeli");
+			var stack = new Stack(10);
+			stack.Push("Matteo");
+			stack.Push("Pierangeli");
 
-			Assert.That(s.Pop(), Is.EqualTo("Pierangeli"));
+			Assert.That(stack.Pop(), Is.EqualTo("Pierangeli"));
+		}
+
+		[Test]
+		public void SortedList()
+		{
+			var list = new SortedList();
+			list.Add(5, "Matteo");
+			list.Add(4, DateTime.UtcNow);
+			list.Add(1, "Pierangeli");
+
+			var firstPosition = list.GetKey(0);
+			Assert.That(list[firstPosition], Is.EqualTo("Pierangeli"));
 		}
 	}
 }

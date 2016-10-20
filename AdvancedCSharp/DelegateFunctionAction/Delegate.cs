@@ -9,6 +9,7 @@ namespace DelegateFunctionAction
 {
 	/*
 	 * in .NET a delegate is a type-safe object that points to another method (static and not).
+	 * you must define the delegate to match the signature of the method(s) it will point to.
 	 * it's composed by 3 pieces of information: address, parameters and return type
 	*/
 
@@ -17,6 +18,8 @@ namespace DelegateFunctionAction
 	{
 		private delegate int BinaryOp(int x, int y); // the compiler generate a sealed class with 3 method: Invoke, BeginInvoke and EndInvoke
 		/*
+		    public delegate int BinaryOp(int x, int y);
+
 			sealed class BinaryOp : System.MulticastDelegate
 			{
 				public int Invoke(int x, int y);
@@ -42,7 +45,18 @@ namespace DelegateFunctionAction
 			var d = new BinaryOp(math.Subtract); //if method is not static I've to create an istance of class to create the delegate
 
 			DisplayDelegateInfo(d);
-			Console.WriteLine("10 - 3 is {0}", d(10, 3));
+			Console.WriteLine("10 - 3 is {0} (due to an error of calculator =] )", d(10, 3));
+		}
+
+		private delegate double BinaryOpDouble(int x, int y);
+		[Test]
+		public void SubWithErrOperation()
+		{
+			var math = new SimpleMath();
+			var d = new BinaryOpDouble(math.SubtractWithError);
+
+			DisplayDelegateInfo(d);
+			Console.WriteLine("10 - 3 is {0} (due to an error of calculator =] )", d(10, 3));
 		}
 
 		private delegate void Writer(string text);
@@ -58,7 +72,7 @@ namespace DelegateFunctionAction
 			for (var i = 0; i <= 100; i+=10)
 			{
 				Thread.Sleep(500);
-				var text = String.Format("[{0}] - {1}% complete", DateTime.UtcNow, i);
+				var text = String.Format("[{0}] - {1}% complete", DateTime.Now, i);
 				logger.Invoke(text);
 			}
 		}
@@ -98,6 +112,11 @@ namespace DelegateFunctionAction
 			foreach (System.Delegate d in delObj.GetInvocationList())
 			{
 				Console.WriteLine("Method Name: {0}", d.Method);
+				
+				// is used only only when the delegate points to a non-static method in order to have a reference.
+				// for example for SimpleMath.SubtractWithError we have a target reference to SimpleMath (otherwise it would be impossible to access to a member variable)
+				Console.WriteLine("Type Name: {0}", d.Target);
+				
 				Console.WriteLine(string.Join(", " , d.GetMethodInfo().GetParameters().Select(x => string.Format("{0} {1}", x.Name, x.ParameterType))));
 			}
 		}

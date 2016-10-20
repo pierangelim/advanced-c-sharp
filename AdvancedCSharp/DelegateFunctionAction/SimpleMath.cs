@@ -2,9 +2,16 @@
 {
 	public class SimpleMath
 	{
+		private const double Error = 0.1;
+
 		public int Subtract(int x, int y)
 		{
 			return x - y;
+		}
+
+		public double SubtractWithError(int x, int y)
+		{
+			return x - y - Error;
 		}
 
 		public static int Add(int x, int y)

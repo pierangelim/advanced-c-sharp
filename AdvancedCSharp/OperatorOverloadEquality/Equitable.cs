@@ -3,6 +3,9 @@ using NUnit.Framework;
 
 namespace OperatorsOverload
 {
+	//Understanding C#: Equality, IEquatable, and Equals()
+	//http://broadcast.oreilly.com/2010/09/understanding-c-equality-iequa.html
+
 	[TestFixture]
 	public class Equitable
 	{
@@ -60,7 +63,7 @@ namespace OperatorsOverload
 		{
 			if (ReferenceEquals(null, obj)) return false;
 			if (ReferenceEquals(this, obj)) return true;
-			if (!(obj is City)) return false;
+			if (obj.GetType() != GetType()) return false;
 			return Equals((City)obj);
 		}
 
@@ -79,7 +82,8 @@ namespace OperatorsOverload
 
 		public static bool operator !=(EquitableCity left, EquitableCity right)
 		{
-			return !Equals(left, right);
+			return !(left == right);
+			//return !Equals(left, right);
 		}
 	}
 }

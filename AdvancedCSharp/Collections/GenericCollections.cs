@@ -12,6 +12,10 @@ namespace Collections
 		 * better performance than nongeneric collection
 		 * type safe
 		 * custom class to handle typed collection is now useless
+		 * 
+		 * 
+		 * Classes of System.Collections.Generic
+		 * Dictionary<TKey, TValue>, LinkedList<T>, List<T>, Queue<T>, SortedDictionary<TKey, TValue>, SortedSet<T> and Stack<T>
 		*/
 
 		[Test]
@@ -21,6 +25,7 @@ namespace Collections
 			list.Add("Matteo is");
 			list.Add("31");
 			list.Add("years old");
+			//list.Add(12);  //--> compile error!
 
 			list.ForEach(Console.WriteLine);
 		}
@@ -42,15 +47,7 @@ namespace Collections
 			{
 				Console.WriteLine(person.Name);
 			}
-
-			var peopleArray = people.ToArray();
-			foreach (var person in peopleArray)
-			{
-				Console.WriteLine(person.Name);
-			}
 		}
-
-		//Stack<T> e Queue<T>
 
 		[Test]
 		public void Dicitonary()
@@ -76,6 +73,20 @@ namespace Collections
 			{
 				Console.WriteLine("{0} is {1} years old.", key, people[key].Age);
 			}
+		}
+
+		[Test]
+		public void LinkedList()
+		{
+			var list = new LinkedList<string>();
+			var first = list.AddFirst("Matteo");
+			var second = list.AddAfter(first, "Pierangeli");
+			var third = list.AddAfter(second, "ha");
+			var fourth = list.AddAfter(third, "32");
+			var fifth = list.AddAfter(fourth, "anni");
+
+			Assert.That(third.Previous.Value, Is.EqualTo("Pierangeli"));
+			Assert.That(third.Next.Value, Is.EqualTo("32"));
 		}
 	}
 }

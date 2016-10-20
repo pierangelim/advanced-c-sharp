@@ -51,7 +51,7 @@ namespace OperatorsOverload
 			Base myBaseType;
 			myBaseType = new Derived(33); // Implicit cast between derived to base.
 			Console.WriteLine("base.p1: {0}", myBaseType.p1);
-			//myBaseType.p2; --> compile error because Base is narrower than Derived
+			//myBaseType.p2; //--> compile error because Base is narrower than Derived!
 
 			Derived myDerivedType = (Derived)myBaseType; // Must explicitly cast to store Base reference in Derived type.
 			Console.WriteLine("derivate.p1: {0}", myDerivedType.p1);
@@ -63,10 +63,10 @@ namespace OperatorsOverload
 		[Test]
 		public void ExplicitConversion()
 		{
-			var square = (Square)90; //Implicit conversion from Int32 to Square
+			Square square = (Square)90; //Explicit conversion from Int32 to Square
 			DrawSquare(square);
 
-			var side = (int)square; //Implicit conversion from Square to Int32
+			int side = (int)square; //Explicit conversion from Square to Int32
 			Console.WriteLine("Side length of square = {0}", side);
 		}
 
