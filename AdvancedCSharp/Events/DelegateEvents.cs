@@ -17,7 +17,7 @@ namespace Events
         }
 
         [Test]
-        public void EncapsulatationIssue_1()
+        public void EncapsulationIssue_1()
         {
             var button = new DelegateButton();
 
@@ -28,7 +28,7 @@ namespace Events
         }
 
         [Test]
-        public void EncapsulatationIssue_2()
+        public void EncapsulationIssue_2()
         {
             var button = new DelegateButton();
 
