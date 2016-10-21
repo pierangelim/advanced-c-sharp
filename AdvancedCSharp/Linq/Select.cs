@@ -62,11 +62,11 @@ namespace Linq
         [Test]
         public void SelectMany()
         {
-            var enumerable = Enumerable.Range(0, 4);
+            var fullNames = new [] { "Anne Williams", "John Fred Smith", "Sue Green" };
 
-            var result = enumerable.SelectMany(i => Enumerable.Range(i * 5, 5));
+            var result = fullNames.SelectMany(name => name.Split());
 
-            result.Print();
+            result.Print("|");
         }
 
         [Test]
