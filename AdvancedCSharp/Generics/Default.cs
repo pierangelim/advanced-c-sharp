@@ -6,6 +6,9 @@ namespace Generics
     [TestFixture]
     public class Default
     {
+        //The default value for a reference type is null
+        //The default value for a value type is the result of bitwise-zeroing the value type’s fields
+
         [Test]
         public void Values()
         {
